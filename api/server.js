@@ -21,6 +21,11 @@ if (!process.env.DISABLE_XORIGIN) {
   });
 }
 
+app.use((req, res, next) => {
+  console.log(`${req.method} ${req.path} ${req.ip}`);
+  next();
+})
+
 app.use('/public', express.static('public'));
 
 var port = process.env.PORT || 3000;
