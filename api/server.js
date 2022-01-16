@@ -3,10 +3,11 @@
  * the verification process may break
  * ***************************************************/
 
-var bGround = require('fcc-express-bground');
-var myApp = require('./myApp');
-var express = require('express');
-var app = express();
+const bGround = require('fcc-express-bground');
+const myApp = require('./myApp');
+const express = require('express');
+const app = express();
+const bodyParser = require('body-parser');
 
 if (!process.env.DISABLE_XORIGIN) {
   app.use(function(req, res, next) {
@@ -20,6 +21,8 @@ if (!process.env.DISABLE_XORIGIN) {
     next();
   });
 }
+
+app.use(bodyParser.urlencoded({ extended: false }))
 
 app.use((req, res, next) => {
   console.log(`${req.method} ${req.path} - ${req.ip}`);
