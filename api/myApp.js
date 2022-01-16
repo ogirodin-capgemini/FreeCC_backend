@@ -14,6 +14,10 @@ app.get('/json', (req, res) => {
   res.json({"message": hello});
 });
 
+app.get('/name', (req, res) => {
+  res.send({name: `${req.query.first} ${req.query.last}`});
+});
+
 app.get('/:word/echo', (req, res) => {
   res.json({"echo": req.params.word});
 });
