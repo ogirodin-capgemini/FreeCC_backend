@@ -2,7 +2,7 @@ require('dotenv').config();
 const mongoose = require('mongoose');
 try {
   mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true }, function(err) {
-    if (err) console.log({err});
+console.log({err});
 });
 } catch (e) {
   console.log(e);
@@ -23,11 +23,21 @@ const PersonSchema = new Schema({
 let Person = mongoose.model('Person', PersonSchema );
 
 const createAndSavePerson = (done) => {
-  done(null /*, data*/);
+  const person = new Person({name: 'Olivier', age: 33, favoriteFoods: ['pizza']});
+  person.save((err) => {
+    if (err) {
+      done(err);
+    } else {
+      done(null, person);
+    }
+  })
 };
 
 const createManyPeople = (arrayOfPeople, done) => {
-  done(null /*, data*/);
+  Person.create(arrayOfPeople, (err, data) => {
+    if (err) {return done(err);}
+    done(null, data);
+  });
 };
 
 const findPeopleByName = (personName, done) => {

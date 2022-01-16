@@ -97,6 +97,7 @@ router.get("/create-and-save-person", function (req, res, next) {
       console.log("Missing `done()` argument");
       return next({ message: "Missing callback argument" });
     }
+    
     Person.findById(data._id, function (err, pers) {
       if (err) {
         return next(err);
@@ -109,7 +110,7 @@ router.get("/create-and-save-person", function (req, res, next) {
 
 const createPeople = require("./myApp.js").createManyPeople;
 router.post("/create-many-people", function (req, res, next) {
-  Person.remove({}, function (err) {
+  Person.deleteMany({}, function (err) {
     if (err) {
       return next(err);
     }
@@ -131,7 +132,7 @@ router.post("/create-many-people", function (req, res, next) {
           return next(err);
         }
         res.json(pers);
-        Person.remove().exec();
+        Person.deleteMany().exec();
       });
     });
   });
