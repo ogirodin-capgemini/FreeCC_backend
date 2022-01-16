@@ -22,7 +22,7 @@ if (!process.env.DISABLE_XORIGIN) {
 }
 
 app.use((req, res, next) => {
-  console.log(`${req.method} ${req.path} ${req.ip}`);
+  console.log(`${req.method} ${req.path} - ${req.ip}`);
   next();
 })
 

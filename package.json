@@ -1,0 +1,26 @@
+{
+  "name": "FreeCCbackend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "dotenv": "^12.0.4",
+    "express": "^4.17.2",
+    "fcc-express-bground": "0.0.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ogirodin/FreeCC_backend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ogirodin/FreeCC_backend/issues"
+  },
+  "homepage": "https://github.com/ogirodin/FreeCC_backend#readme"
+}
