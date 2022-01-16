@@ -22,12 +22,10 @@ if (!process.env.DISABLE_XORIGIN) {
   });
 }
 
-app.use(bodyParser.urlencoded({ extended: false }))
-
 app.use((req, res, next) => {
   console.log(`${req.method} ${req.path} - ${req.ip}`);
   next();
-})
+}, bodyParser.urlencoded({ extended: false }));
 
 app.use('/public', express.static('public'));
 
