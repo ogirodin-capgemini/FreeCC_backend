@@ -14,6 +14,10 @@ app.get('/json', (req, res) => {
   res.json({"message": hello});
 });
 
+app.get('/:word/echo', (req, res) => {
+  res.json({"message": req.params.word});
+});
+
 app.get('/now', function(req, res, next) {
   req.time = new Date().toString();  // Hypothetical synchronous operation
   next();

@@ -1,3 +1,3 @@
 #!/bin/bash
 pwd
-node ./server.js
+node --inspect=0.0.0.0:9229 ./server.js
