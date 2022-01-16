@@ -2,8 +2,9 @@ const express = require('express');
 const app = express();
 const dotenv = require('dotenv')
 dotenv.config()
+const bodyParser = require('body-parser');
 
-console.log('Hello World');
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/views/index.html');

@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "body-parser": "^1.19.1",
     "dotenv": "^12.0.4",
     "express": "^4.17.2",
     "fcc-express-bground": "0.0.5"

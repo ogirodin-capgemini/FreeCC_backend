@@ -7,7 +7,6 @@ const bGround = require('fcc-express-bground');
 const myApp = require('./myApp');
 const express = require('express');
 const app = express();
-const bodyParser = require('body-parser');
 
 if (!process.env.DISABLE_XORIGIN) {
   app.use(function(req, res, next) {
@@ -25,7 +24,7 @@ if (!process.env.DISABLE_XORIGIN) {
 app.use((req, res, next) => {
   console.log(`${req.method} ${req.path} - ${req.ip}`);
   next();
-}, bodyParser.urlencoded({ extended: false }));
+});
 
 app.use('/public', express.static('public'));
 
