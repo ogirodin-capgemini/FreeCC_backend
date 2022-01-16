@@ -8,7 +8,19 @@ try {
   console.log(e);
 }
 
-let Person;
+const Schema = mongoose.Schema;
+
+const PersonSchema = new Schema({
+  "name": {
+    "type": String,
+    "required": true,
+  },
+  "age": Number, 
+  "favoriteFoods": [{"type": String}]
+});
+
+// Compile model from schema
+let Person = mongoose.model('Person', PersonSchema );
 
 const createAndSavePerson = (done) => {
   done(null /*, data*/);

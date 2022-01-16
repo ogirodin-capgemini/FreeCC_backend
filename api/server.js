@@ -397,7 +397,7 @@ router.post("/query-tools", function (req, res, next) {
     });
   });
 });
-
+app.use('/public', express.static('public'));
 app.use("/_api", enableCORS, router);
 
 // Error handler
