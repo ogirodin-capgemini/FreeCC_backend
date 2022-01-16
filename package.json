@@ -2,6 +2,7 @@
 	"name": "fcc-learn-npm-package-json",
 	"author": "Olivier Girodin <ogirodin@gmail.com>",
 	"description": "A project that does something awesome",
+	"keywords": [ "descriptive", "related", "words", "learning" ],
 	"dependencies": {
 		"express": "^4.14.0"
 	},
