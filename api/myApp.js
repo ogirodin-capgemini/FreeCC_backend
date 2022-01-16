@@ -1,69 +1,77 @@
-const express = require('express');
-const app = express();
-const dotenv = require('dotenv')
-dotenv.config()
-const bodyParser = require('body-parser');
-
-app.use(bodyParser.urlencoded({ extended: true }));
-
-app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/views/index.html');
+require('dotenv').config();
+const mongoose = require('mongoose');
+try {
+  mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true }, function(err) {
+    if (err) console.log({err});
 });
+} catch (e) {
+  console.log(e);
+}
 
-app.get('/json', (req, res) => {
-  const hello = process.env.MESSAGE_STYLE === 'uppercase' ? "Hello json".toUpperCase() : "Hello json";
-  res.json({"message": hello});
-});
+let Person;
 
-app.get('/name', (req, res) => {
-  res.send({name: `${req.query.first} ${req.query.last}`});
-});
+const createAndSavePerson = (done) => {
+  done(null /*, data*/);
+};
 
-app.post('/name', (req, res) => {
-  res.send({name: `${req.body.first} ${req.body.last}`});
-});
+const createManyPeople = (arrayOfPeople, done) => {
+  done(null /*, data*/);
+};
 
-app.get('/:word/echo', (req, res) => {
-  res.json({"echo": req.params.word});
-});
+const findPeopleByName = (personName, done) => {
+  done(null /*, data*/);
+};
 
-app.get('/now', function(req, res, next) {
-  req.time = new Date().toString();  // Hypothetical synchronous operation
-  next();
-}, function(req, res) {
-  res.send({time: req.time});
-});
+const findOneByFood = (food, done) => {
+  done(null /*, data*/);
+};
 
+const findPersonById = (personId, done) => {
+  done(null /*, data*/);
+};
 
+const findEditThenSave = (personId, done) => {
+  const foodToAdd = "hamburger";
 
+  done(null /*, data*/);
+};
 
+const findAndUpdate = (personName, done) => {
+  const ageToSet = 20;
 
+  done(null /*, data*/);
+};
 
+const removeById = (personId, done) => {
+  done(null /*, data*/);
+};
 
+const removeManyPeople = (done) => {
+  const nameToRemove = "Mary";
 
+  done(null /*, data*/);
+};
 
+const queryChain = (done) => {
+  const foodToSearch = "burrito";
 
+  done(null /*, data*/);
+};
 
+/** **Well Done !!**
+/* You completed these challenges, let's go celebrate !
+ */
 
+//----- **DO NOT EDIT BELOW THIS LINE** ----------------------------------
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-module.exports = app;
+exports.PersonModel = Person;
+exports.createAndSavePerson = createAndSavePerson;
+exports.findPeopleByName = findPeopleByName;
+exports.findOneByFood = findOneByFood;
+exports.findPersonById = findPersonById;
+exports.findEditThenSave = findEditThenSave;
+exports.findAndUpdate = findAndUpdate;
+exports.createManyPeople = createManyPeople;
+exports.removeById = removeById;
+exports.removeManyPeople = removeManyPeople;
+exports.queryChain = queryChain;
