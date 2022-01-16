@@ -19,6 +19,10 @@ app.get('/name', (req, res) => {
   res.send({name: `${req.query.first} ${req.query.last}`});
 });
 
+app.post('/name', (req, res) => {
+  res.send({name: `${req.body.first} ${req.body.last}`});
+});
+
 app.get('/:word/echo', (req, res) => {
   res.json({"echo": req.params.word});
 });
