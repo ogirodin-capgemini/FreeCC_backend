@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  api:
+    build: ./api
+    environment:
+      MESSAGE_STYLE: "uppercase"
+    volumes:
+      - './api/:/app'
+    ports:
+      - "3000:3000"
