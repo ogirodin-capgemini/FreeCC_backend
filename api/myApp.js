@@ -68,16 +68,19 @@ const findEditThenSave = async (personId, done) => {
     pers.favoriteFoods.push(foodToAdd);
     pers.markModified('favoriteFoods');
     let updatePers = await pers.save();
-    done(null, updatePers)
+    done(null, updatePers);
   } catch (e) {
     done(e);
   }
 };
 
-const findAndUpdate = (personName, done) => {
+const findAndUpdate = async (personName, done) => {
   const ageToSet = 20;
-
-  done(null /*, data*/);
+  let pers = await Person.findOne({name: personName});
+  pers.markModified('age');
+  pers.age = ageToSet;
+  let updatedPers = await pers.save();
+  done(null, updatedPers);
 };
 
 const removeById = (personId, done) => {
