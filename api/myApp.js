@@ -92,10 +92,10 @@ const removeById = async (personId, done) => {
   }
 };
 
-const removeManyPeople = (done) => {
+const removeManyPeople = async (done) => {
   const nameToRemove = "Mary";
-
-  done(null /*, data*/);
+  let rez = await Person.remove({name: nameToRemove});
+  done(null, rez);
 };
 
 const queryChain = (done) => {
